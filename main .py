@@ -59,7 +59,7 @@ for row in test_data:
         correct_predictions += 1
 
 accuracy = correct_predictions / len(test_data)
-print("Model Accuracy:", accuracy)
+print("Final Model Accuracy:", accuracy)
 
 
 def predict(attendance, study_hours, marks, sleep_hours):
