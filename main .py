@@ -44,40 +44,4 @@ for _ in range(epochs):
         weights[-1] += learning_rate * error
 
 
-correct_predictions = 0
 
-for row in test_data:
-    features = row[:-1]
-    actual = row[-1]
-
-    weighted_sum = weights[-1]
-    for i in range(len(features)):
-        weighted_sum += weights[i] * features[i]
-
-    prediction = round(sigmoid(weighted_sum))
-
-    if prediction == actual:
-        correct_predictions += 1
-
-accuracy = correct_predictions / len(test_data)
-print("Model Accuracy:", accuracy)
-
-
-def predict(attendance, study_hours, marks, sleep_hours):
-    features = [attendance, study_hours, marks, sleep_hours]
-
-    weighted_sum = weights[-1]
-    for i in range(len(features)):
-        weighted_sum += weights[i] * features[i]
-
-    prediction = round(sigmoid(weighted_sum))
-
-    if prediction == 0:
-        return "SAFE"
-    elif prediction == 1:
-        return "WARNING"
-    else:
-        return "CRITICAL"
-
-
-print("Predicted Risk Level:", predict(65, 2, 50, 5))
